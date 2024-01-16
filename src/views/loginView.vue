@@ -1,6 +1,6 @@
 <template>
   <div class="div_color">
-    <img :src="login_center_bg" class="login-center-layout">
+    <img class="login-center-layout"> //:src="login_center_bg" 
     <div class="div_box">
       <img src="../icons/svg/login-mall.svg" class="img_p">
       <h2 class="login-title color">mall-admin-web</h2>
@@ -21,8 +21,8 @@
         </el-form-item>
         <!-- 按钮 -->
         <el-form-item style="margin-bottom: 60px;text-align: center">
-          <el-button style="width: 45%; margin-right: 20px" type="primary" :loading="loading" @click="login">登录</el-button>
-          <el-button style="width: 45%" type="primary" :loading="loading" @click="resetloginform">清空</el-button>
+          <el-button style="width: 45%; margin-right: 20px" type="primary" @click="login">登录</el-button>
+          <el-button style="width: 45%" type="primary"  @click="resetloginform">清空</el-button>
         </el-form-item>
       </el-form>
 
@@ -54,10 +54,13 @@ export default {
       this.$refs.loginFormRef.resetFields();
     },
     login(){
-      this.$refs.loginFormRef.validate((valid)=>{
+      this.$refs.loginFormRef.validate(async valid=>{
         if(!valid) return;
-        // this.$http.post("login",this.loginForm);
-        // console.log(Result)
+        const data = await this.$http.post("login",this.loginForm);
+        if(data.status !=200) return this.$message.error("登录失败")
+        this.$message.success("登录成功")
+       // console.log(data)
+        this.$router.push('/home');
       })
     }
   }

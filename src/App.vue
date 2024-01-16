@@ -5,7 +5,9 @@
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'App'
+}
 </script>
 
-<style lang="less" scoped>
+<!-- <style lang="less" scoped> -->
