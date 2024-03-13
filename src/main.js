@@ -3,9 +3,9 @@ import App from './App.vue'
 import router from './router'
 import './plugins/element.js'
 import 'element-ui/lib/theme-chalk/index.css';
-import '@/styles/index.scss' // global css
 import './assets/css/index.css'
 import '@/assets/css/global.css'
+
 
 // 导入axios
 import axios from 'axios';

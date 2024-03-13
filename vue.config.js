@@ -28,6 +28,16 @@ module.exports = defineConfig({
         symbolId: 'icon-[name]'
       })
       .end()
+  },
+  css: {
+    loaderOptions: {
+      scss: {
+        // @/ 是 src/ 的别名
+        // 所以这里假设你有 `src/variables.sass` 这个文件
+        // 注意：在 sass-loader v9 中，这个选项名是 "additionalData" v7中这个选项名是data
+        additionalData:`@import '~@/styles/index.scss';`
+      }
+    }
   }
 
 })
